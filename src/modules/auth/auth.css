@@ -1,0 +1,78 @@
+.auth-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.1fr) minmax(320px, 0.9fr);
+  min-height: calc(100vh - 70px);
+  gap: 0;
+  border: 1px solid var(--color-borde);
+  border-radius: 28px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fff5fa 0%, #ffffff 100%);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+}
+
+.auth-image-sidebar {
+  background:
+    linear-gradient(135deg, rgba(182, 28, 92, 0.78) 0%, rgba(15, 23, 42, 0.55) 100%),
+    url('../../img/interactive-classroom-session-stockcake.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 320px;
+}
+
+.auth-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 32px;
+}
+
+.auth-form-box {
+  width: min(100%, 420px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  border: 1px solid var(--color-borde);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.auth-form-box h2 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.auth-form-box p {
+  margin: 0;
+  color: var(--color-secundario);
+  line-height: 1.6;
+}
+
+.auth-form-box input {
+  height: 46px;
+  border: 1px solid var(--color-borde);
+  border-radius: 999px;
+  padding: 0 16px;
+  font-size: 0.95rem;
+}
+
+.btn-submit-auth {
+  height: 46px;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-principal);
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-image-sidebar {
+    min-height: 220px;
+  }
+}

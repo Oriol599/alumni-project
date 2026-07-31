@@ -1,0 +1,33 @@
+.badges-container {
+  padding: 0 20px;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badge-remote {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.badge-hybrid {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.badge-on-site {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.badge-contract {
+  background-color: #f3e8ff;
+  color: #7e22ce;
+}
