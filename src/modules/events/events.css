@@ -1,75 +1,88 @@
 .contenedor-lineal {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .tarjeta-horizontal {
-  background-color: var(--color-fondo);
-  border: 1px solid var(--color-borde);
-  border-radius: 18px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
   display: flex;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tarjeta-horizontal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
 }
 
 .bloque-fecha {
-  background: linear-gradient(180deg, #fff5fa 0%, #fdf2f8 100%);
-  border-right: 1px solid var(--color-borde);
-  min-width: 104px;
+  background: rgba(217, 70, 239, 0.06);
+  border-right: 1px solid #e2e8f0;
+  min-width: 90px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 20px 16px;
+  gap: 2px;
 }
 
 .bloque-fecha h2 {
   margin: 0;
   font-size: 1.8rem;
   font-weight: 800;
-  color: var(--color-principal);
+  color: #d946ef;
+  line-height: 1;
 }
 
 .bloque-fecha p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--color-secundario);
+  color: #94a3b8;
+  letter-spacing: 0.08em;
 }
 
 .bloque-info {
-  padding: 20px;
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
+  flex: 1;
 }
 
 .tags-fila {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: var(--color-secundario);
+  color: #d946ef;
   margin: 0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .tarjeta-horizontal h2 {
   margin: 0;
-  font-size: 1.2rem;
-  color: var(--color-texto);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 .tarjeta-horizontal p {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   color: #475569;
   line-height: 1.5;
 }
 
 .info-detalles {
-  font-size: 0.82rem !important;
-  color: var(--color-secundario) !important;
-  margin-top: 4px;
+  font-size: 0.78rem !important;
+  color: #94a3b8 !important;
+  margin-top: 6px !important;
 }
 
 @media (max-width: 640px) {
@@ -79,7 +92,15 @@
 
   .bloque-fecha {
     border-right: none;
-    border-bottom: 1px solid var(--color-borde);
-    align-items: flex-start;
+    border-bottom: 1px solid #e2e8f0;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 14px 18px;
+  }
+
+  .bloque-fecha h2 {
+    font-size: 1.4rem;
   }
 }

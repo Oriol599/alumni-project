@@ -1,33 +1,39 @@
 .badges-container {
-  padding: 0 20px;
+  padding: 0 16px;
   display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
 }
 
 .badge {
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .badge-remote {
-  background-color: #e0f2fe;
-  color: #0369a1;
+  background-color: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
 }
 
 .badge-hybrid {
-  background-color: #fef3c7;
+  background-color: #fffbeb;
   color: #b45309;
+  border: 1px solid #fde68a;
 }
 
 .badge-on-site {
-  background-color: #dcfce7;
+  background-color: #f0fdf4;
   color: #15803d;
+  border: 1px solid #bbf7d0;
 }
 
 .badge-contract {
-  background-color: #f3e8ff;
-  color: #7e22ce;
+  background-color: rgba(217, 70, 239, 0.08);
+  color: #a21caf;
+  border: 1px solid rgba(217, 70, 239, 0.2);
 }

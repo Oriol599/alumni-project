@@ -1,8 +1,12 @@
 import './style.css';
-import { renderizarLanding } from './modules/landing/landing';
 
 // La aplicación se inicia mostrando la landing como pantalla principal.
-renderizarLanding();
+async function iniciarAplicacion(): Promise<void> {
+  const { renderizarLanding } = await import('./modules/landing/landing');
+  renderizarLanding();
+}
+
+iniciarAplicacion();
 
 // Exportamos esta función para poder llamarla desde cualquier módulo cuando queramos pintar el menú de datos
 export function mostrarBannerNavegacion(): void {
@@ -12,42 +16,64 @@ export function mostrarBannerNavegacion(): void {
   const banner = document.createElement('div');
   banner.className = 'simple-banner';
 
-  const text = document.createElement('p');
-  text.innerText = 'X ALUMNI'; // Nombre oficial que se ve en tu logo magenta
-  banner.appendChild(text);
+  // --- LOGO: "X" en magenta + "LUMNI" en oscuro ---
+  const logo = document.createElement('div');
+  logo.className = 'banner-logo';
+  logo.innerHTML = '<span class="logo-x">X</span>LUMNI';
+  logo.addEventListener('click', async () => {
+    document.querySelector('.simple-banner')?.remove();
+    const { renderizarLanding } = await import('./modules/landing/landing');
+    renderizarLanding();
+  });
+  banner.appendChild(logo);
 
-  const buttonContainer = document.createElement('div');
-  buttonContainer.className = 'banner-buttons';
+  // --- NAV CENTRAL: Alumni, Job Board, Events ---
+  const nav = document.createElement('nav');
+  nav.className = 'banner-nav';
 
-  const btn1 = document.createElement('button');
-  btn1.innerText = 'Alumni';
-  // Nota: Al importar dinámicamente mañana evitaremos bucles de importación
-  btn1.addEventListener('click', async () => {
-    const { renderizarAlumni } = await import('./modules/alumni/alumni.ts');
-    renderizarAlumni();
+  const navLinks = [
+    { label: 'Alumni', action: async () => { const { renderizarAlumni } = await import('./modules/alumni/alumni.ts'); renderizarAlumni(); } },
+    { label: 'Borsa de treball', action: async () => { const { renderizarJobs } = await import('./modules/jobs/jobs.ts'); renderizarJobs(); } },
+    { label: 'Esdeveniments', action: async () => { const { renderizarEvents } = await import('./modules/events/events.ts'); renderizarEvents(); } },
+  ];
+
+  navLinks.forEach(({ label, action }) => {
+    const btn = document.createElement('button');
+    btn.innerText = label;
+    btn.addEventListener('click', () => {
+      // Marca el activo
+      nav.querySelectorAll('button').forEach(b => b.classList.remove('activo'));
+      btn.classList.add('activo');
+      action();
+    });
+    nav.appendChild(btn);
   });
 
-  const btn2 = document.createElement('button');
-  btn2.innerText = 'Job board';
-  btn2.addEventListener('click', async () => {
-    const { renderizarJobs } = await import('./modules/jobs/jobs.ts');
-    renderizarJobs();
+  banner.appendChild(nav);
+
+  // --- ACCIONES DERECHA: Entra-hi + Registra't ---
+  const actions = document.createElement('div');
+  actions.className = 'banner-actions';
+
+  const btnLogin = document.createElement('button');
+  btnLogin.innerText = 'Entra-hi';
+  btnLogin.className = 'btn-banner-outline';
+  btnLogin.addEventListener('click', async () => {
+    const { renderizarAuth } = await import('./modules/auth/auth');
+    renderizarAuth();
   });
 
-  const btn3 = document.createElement('button');
-  btn3.innerText = 'Events';
-  btn3.addEventListener('click', async () => {
-    const { renderizarEvents } = await import('./modules/events/events.ts');
-    renderizarEvents();
+  const btnRegister = document.createElement('button');
+  btnRegister.innerText = "Registra't";
+  btnRegister.className = 'btn-banner-solid';
+  btnRegister.addEventListener('click', async () => {
+    const { renderizarAuth } = await import('./modules/auth/auth');
+    renderizarAuth();
   });
 
-  buttonContainer.appendChild(btn1);
-  buttonContainer.appendChild(btn2);
-  buttonContainer.appendChild(btn3);
-  banner.appendChild(buttonContainer);
+  actions.appendChild(btnLogin);
+  actions.appendChild(btnRegister);
+  banner.appendChild(actions);
+
   document.body.appendChild(banner);
 }
-
-
-
-
