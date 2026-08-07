@@ -37,4 +37,22 @@ describe('module entry points', () => {
     expect(ctaLabels).toContain('Uneix-te');
     expect(ctaLabels).toContain('Mira què fem');
   });
+
+  it('renders a hero badge for the landing page intro', async () => {
+    await renderizarLanding();
+
+    const heroBadge = document.querySelector('.hero-badge')?.textContent?.trim();
+
+    expect(heroBadge).toContain('Comunitat d\'alumnes');
+  });
+
+  it('renders an enhanced authentication experience with a mode switch', () => {
+    renderizarAuth();
+
+    const authToggle = document.querySelector('.auth-form-toggle');
+    const authHero = document.querySelector('.auth-hero-panel');
+
+    expect(authToggle).not.toBeNull();
+    expect(authHero).not.toBeNull();
+  });
 });

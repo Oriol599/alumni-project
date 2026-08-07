@@ -1,14 +1,64 @@
+.jobs-intro {
+  margin-bottom: 24px;
+}
+
+.jobs-intro h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.6rem, 2.3vw, 2.2rem);
+  color: var(--color-texto);
+}
+
+.jobs-intro p {
+  margin: 0;
+  color: var(--color-secundario);
+  max-width: 760px;
+  line-height: 1.6;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 20px;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid var(--color-borde);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.tarjeta h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--color-texto);
+}
+
+.tarjeta h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-principal);
+}
+
+.jobs-location {
+  margin: 0;
+  color: var(--color-secundario);
+  font-size: 0.92rem;
+}
+
 .badges-container {
-  padding: 0 16px;
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
-  margin-bottom: 12px;
 }
 
 .badge {
-  padding: 3px 10px;
-  border-radius: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -36,4 +86,22 @@
   background-color: rgba(217, 70, 239, 0.08);
   color: #a21caf;
   border: 1px solid rgba(217, 70, 239, 0.2);
+}
+
+.jobs-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.jobs-tags li {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.8rem;
+  border: 1px solid #e2e8f0;
 }

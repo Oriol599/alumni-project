@@ -32,15 +32,60 @@
 .auth-form-container {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: min(100%, 480px);
+  display: grid;
+  grid-template-columns: minmax(260px, 1.05fr) minmax(320px, 0.95fr);
+  align-items: stretch;
+  width: min(100%, 1120px);
+  gap: 24px;
   padding: 40px 24px;
 }
 
+.auth-hero-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(88, 28, 135, 0.88));
+  color: #ffffff;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+}
+
+.auth-hero-badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.auth-hero-panel h3 {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.auth-hero-panel p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.auth-hero-list {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .auth-form-box {
-  width: min(100%, 420px);
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -49,6 +94,29 @@
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
   backdrop-filter: blur(10px);
+}
+
+.auth-form-toggle {
+  display: inline-flex;
+  width: fit-content;
+  padding: 4px;
+  border-radius: 999px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.auth-form-toggle span {
+  padding: 7px 12px;
+  border-radius: 999px;
+}
+
+.auth-toggle-active {
+  background: #d946ef;
+  color: #ffffff;
 }
 
 .auth-form-box h2 {
@@ -198,7 +266,12 @@
 
   .auth-form-container {
     width: 100%;
+    grid-template-columns: 1fr;
     padding: 24px 18px 40px;
+  }
+
+  .auth-hero-panel {
+    padding: 24px;
   }
 
   .auth-form-box {

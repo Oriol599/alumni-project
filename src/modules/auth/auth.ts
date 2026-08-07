@@ -17,8 +17,38 @@ export function renderizarAuth(): void {
   const formContainer = document.createElement("div");
   formContainer.className = "auth-form-container";
 
+  const heroPanel = document.createElement("div");
+  heroPanel.className = "auth-hero-panel";
+
+  const heroBadge = document.createElement("div");
+  heroBadge.className = "auth-hero-badge";
+  heroBadge.textContent = "XAlumni Community";
+
+  const heroTitle = document.createElement("h3");
+  heroTitle.textContent = "Uneix-te a una xarxa que impulsa la teva carrera";
+
+  const heroText = document.createElement("p");
+  heroText.textContent = "Descobreix mentors, oportunitats i esdeveniments pensats per a l'alumnat i exalumnes.";
+
+  const heroList = document.createElement("ul");
+  heroList.className = "auth-hero-list";
+  ["Accés a networking real", "Ofertes i mentoratge", "Comunitat activa"].forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    heroList.appendChild(li);
+  });
+
+  heroPanel.appendChild(heroBadge);
+  heroPanel.appendChild(heroTitle);
+  heroPanel.appendChild(heroText);
+  heroPanel.appendChild(heroList);
+
   const formBox = document.createElement("div");
   formBox.className = "auth-form-box";
+
+  const toggle = document.createElement("div");
+  toggle.className = "auth-form-toggle";
+  toggle.innerHTML = '<span class="auth-toggle-active">Registre</span><span>Inici de sessió</span>';
 
   const h2 = document.createElement("h2");
   h2.textContent = "Crea un compte";
@@ -100,6 +130,7 @@ export function renderizarAuth(): void {
   footerLink.className = "auth-footer-link";
   footerLink.innerHTML = `Ja t’has registrat? <a href="#">Inicia sessió</a>`;
 
+  formBox.appendChild(toggle);
   formBox.appendChild(h2);
   formBox.appendChild(pInfo);
   formBox.appendChild(inputName);
@@ -113,6 +144,8 @@ export function renderizarAuth(): void {
   formBox.appendChild(footerLink);
   formContainer.appendChild(formBox);
 
+  formContainer.appendChild(heroPanel);
+  formContainer.appendChild(formBox);
   authContainer.appendChild(formContainer);
   app.appendChild(authContainer);
 }

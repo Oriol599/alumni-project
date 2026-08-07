@@ -36,6 +36,19 @@ export function renderizarAlumni(): void {
 
   app.innerHTML = ''; 
 
+  const intro = document.createElement('section');
+  intro.className = 'alumni-intro';
+
+  const title = document.createElement('h1');
+  title.textContent = 'Descobreix alumni i connecta amb la teva comunitat';
+
+  const subtitle = document.createElement('p');
+  subtitle.textContent = 'Explora perfils, competències i estat d\'ocupació per trobar el contacte adequat.';
+
+  intro.appendChild(title);
+  intro.appendChild(subtitle);
+  app.appendChild(intro);
+
   // --- CONTENEDOR DE FILTROS (Misma estructura que la imagen) ---
   const zonaFiltros = document.createElement("div");
   zonaFiltros.className = "zona-filtros";
@@ -110,24 +123,36 @@ export function renderizarAlumni(): void {
   // SEGUNDO: TU MAQUETACIÓN DE TARJETAS (Abajo)
   // ==========================================
   const contenedor = document.createElement("main");
-  contenedor.className = "contenedor"; 
+  contenedor.className = "contenedor alumni-grid"; 
 
   // ¡CAMBIO CLAVE!: Usamos alumnosFiltrados en vez de alumni
   alumnosFiltrados.forEach((item: Alumni) => {
     const tarjeta = document.createElement("section");
     tarjeta.className = "tarjeta";
 
-    const h2 = document.createElement("h2");
-    h2.textContent = item.name;
+    const avatar = document.createElement('div');
+    avatar.className = 'alumni-avatar';
+    avatar.textContent = item.name.charAt(0);
 
     const img = document.createElement("img");
     img.src = item.imageUrl; 
     img.alt = item.name;     
 
+    const info = document.createElement('div');
+    info.className = 'alumni-card-info';
+
+    const h2 = document.createElement("h2");
+    h2.textContent = item.name;
+
+    const role = document.createElement('p');
+    role.className = 'alumni-role';
+    role.textContent = item.role;
+
     const loc = document.createElement("p");
     loc.textContent = item.location;
 
     const stackList = document.createElement("ul");
+    stackList.className = 'alumni-tags';
     item.stack.forEach(tech => {
       const li = document.createElement("li");
       li.textContent = tech;
@@ -135,14 +160,18 @@ export function renderizarAlumni(): void {
     });
 
     const dispo = document.createElement("p");
+    dispo.className = 'alumni-availability';
     dispo.textContent = item.availability;
 
-    // Ensamblamos los elementos en la tarjeta
+    info.appendChild(h2);
+    info.appendChild(role);
+    info.appendChild(loc);
+    info.appendChild(stackList);
+    info.appendChild(dispo);
+
+    tarjeta.appendChild(avatar);
     tarjeta.appendChild(img);
-    tarjeta.appendChild(loc);
-    tarjeta.appendChild(h2);
-    tarjeta.appendChild(dispo);
-    tarjeta.appendChild(stackList);
+    tarjeta.appendChild(info);
 
     // (Aquí sigues insertando tu estructura de tarjetas: img, tags...)
 

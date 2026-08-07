@@ -12,6 +12,19 @@ export function renderizarEvents(): void {
   if (!app) return;
   app.innerHTML = ''; 
 
+  const intro = document.createElement('section');
+  intro.className = 'events-intro';
+
+  const title = document.createElement('h1');
+  title.textContent = 'Descobreix esdeveniments, tallers i oportunitats de networking';
+
+  const subtitle = document.createElement('p');
+  subtitle.textContent = 'Consulta la agenda i troba activitats pensades per connectar, aprendre i créixer.';
+
+  intro.appendChild(title);
+  intro.appendChild(subtitle);
+  app.appendChild(intro);
+
   // --- ZONA DE FILTROS ---
   const zonaFiltros = document.createElement("div");
   zonaFiltros.className = "zona-filtros";
@@ -96,7 +109,7 @@ export function renderizarEvents(): void {
 
     const infoDetalles = document.createElement("p");
     infoDetalles.className = "info-detalles";
-    infoDetalles.textContent = `${item.location}`;
+    infoDetalles.textContent = `${item.location} • ${item.date}`;
 
     bloqueInfo.appendChild(tagsFila);
     bloqueInfo.appendChild(titulo);

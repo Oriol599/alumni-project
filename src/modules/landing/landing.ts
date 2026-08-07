@@ -29,6 +29,10 @@ export async function renderizarLanding(): Promise<void> {
   logo.className = "hero-logo";
   logo.innerHTML = '<span class="hero-logo-x">X</span><span class="hero-logo-text">LUMNI</span>';
 
+  const heroBadge = document.createElement("div");
+  heroBadge.className = "hero-badge";
+  heroBadge.textContent = "Comunitat d'alumnes • Networking • Oportunitats";
+
   const titulo = document.createElement("h1");
   titulo.textContent = "Benvingut, Alumni";
 
@@ -40,18 +44,19 @@ export async function renderizarLanding(): Promise<void> {
   ctaContainer.className = "landing-ctas";
 
   const btnJoin = document.createElement("button");
-  btnJoin.innerText = "Uneix-te";
+  btnJoin.textContent = "Uneix-te";
   btnJoin.className = "btn-cta btn-cta-solid";
   btnJoin.addEventListener("click", () => renderizarAuth());
 
   const btnExplore = document.createElement("button");
-  btnExplore.innerText = "Mira què fem";
+  btnExplore.textContent = "Mira què fem";
   btnExplore.className = "btn-cta btn-cta-outline";
   btnExplore.addEventListener("click", () => renderizarAuth());
 
   ctaContainer.appendChild(btnJoin);
   ctaContainer.appendChild(btnExplore);
   heroLeft.appendChild(logo);
+  heroLeft.appendChild(heroBadge);
   heroLeft.appendChild(titulo);
   heroLeft.appendChild(subtitulo);
   heroLeft.appendChild(ctaContainer);

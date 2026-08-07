@@ -27,6 +27,19 @@ export function renderizarJobs(): void {
   if (!app) return;
   app.innerHTML = '';
 
+  const intro = document.createElement('section');
+  intro.className = 'jobs-intro';
+
+  const title = document.createElement('h1');
+  title.textContent = 'Explora oportunitats laborals i projectes que encaixen amb tu trajectòria';
+
+  const subtitle = document.createElement('p');
+  subtitle.textContent = 'Filtra per modalitat, contracte i competències per trobar el teu proper pas professional.';
+
+  intro.appendChild(title);
+  intro.appendChild(subtitle);
+  app.appendChild(intro);
+
   // --- ZONA DE FILTROS ---
   const zonaFiltros = document.createElement("div");
   zonaFiltros.className = "zona-filtros";
@@ -97,7 +110,7 @@ export function renderizarJobs(): void {
 
   // --- CONTEDOR DE TARJETAS (GRID) ---
   const contenedor = document.createElement("main");
-  contenedor.className = "contenedor";
+  contenedor.className = "contenedor jobs-grid";
 
   jobsFiltrados.forEach((item: Job) => {
     const tarjeta = document.createElement("section");
@@ -110,9 +123,9 @@ export function renderizarJobs(): void {
     empresa.textContent = item.company;
 
     const loc = document.createElement("p");
+    loc.className = 'jobs-location';
     loc.textContent = item.location;
 
-    // Etiquetas de Modalidad y Contrato
     const badgesContainer = document.createElement("div");
     badgesContainer.className = "badges-container";
     const badgeMode = document.createElement("span");
@@ -125,6 +138,7 @@ export function renderizarJobs(): void {
     badgesContainer.appendChild(badgeContract);
 
     const stackList = document.createElement("ul");
+    stackList.className = 'jobs-tags';
     item.stack.forEach(tech => {
       const li = document.createElement("li");
       li.textContent = tech;
